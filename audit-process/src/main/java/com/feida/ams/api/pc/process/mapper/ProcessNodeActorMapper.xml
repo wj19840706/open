@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.feida.ams.api.pc.process.mapper.ProcessNodeActorMapper">
+
+    <select id="getListByCondition" resultType="com.feida.common.domain.BaseDto" parameterType="com.feida.common.domain.BaseDto">
+        select
+            pa.executive_ids as executiveIds,
+            pa.executive_level as executiveLevel,
+            pa.executive_type as executiveType,
+            pa.id as id,
+            pa.process_node_id as processNodeId
+        from process_node_actor_t pa
+        where pa.process_node_id = #{processNodeId}
+
+
+    </select>
+</mapper>

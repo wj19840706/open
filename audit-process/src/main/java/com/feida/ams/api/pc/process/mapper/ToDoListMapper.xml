@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.feida.ams.api.pc.process.mapper.ToDoListMapper">
+
+    <select id="getByCondition" resultType="com.feida.common.domain.BaseDto"
+            parameterType="com.feida.common.domain.BaseDto">
+        select
+        td.transfer_flag as transferFlag,
+        td.title as title,
+        td.status as status,
+        td.process_node_id as processNodeId,
+        td.process_instance_id as processInstanceId,
+        td.id as id,
+        td.form_type_id as formTypeId,
+        td.form_id as formId,
+        td.creator as creator,
+        td.create_time as createTime,
+        td.actor_id as actorId,
+        a.staff_name as staffName
+        from to_do_list_t td
+        join account_t a on a.id = td.actor_id
+        where 1=1
+        <if test="null != processInstanceId and processInstanceId != ''">
+            and td.process_instance_id = #{processInstanceId}
+        </if>
+        <if test="null != processNodeId and processNodeId != ''">
+            and td.process_node_id = #{processNodeId}
+        </if>
+        <if test="null != status and status != ''">
+            and td.status = #{status}
+        </if>
+    </select>
+</mapper>
