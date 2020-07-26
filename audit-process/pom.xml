@@ -7,11 +7,11 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.0.4.RELEASE</version>
+        <version>2.1.7.RELEASE</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.feida</groupId>
-    <artifactId>ams-api</artifactId>
+    <groupId>com.wj</groupId>
+    <artifactId>audit-process</artifactId>
 	 <version>1.0-SNAPSHOT</version>
 
     <properties>
@@ -27,6 +27,34 @@
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-quartz</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-mail</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-websocket</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+        </dependency>
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
@@ -80,23 +108,7 @@
                     <testFailureIgnore>true</testFailureIgnore>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>cn.joylau.code</groupId>
-                <artifactId>joylau-springboot-daemon-windows</artifactId>
-                <version>1.1.RELEASE</version>
-                <executions>
-                    <execution>
-                        <id>make-win-service</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>make-win-service</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <programArguments>--spring.profiles.active=production</programArguments>
-                </configuration>
-            </plugin>
+
             <plugin>
                 <groupId>org.mybatis.generator</groupId>
                 <artifactId>mybatis-generator-maven-plugin</artifactId>
